@@ -1,179 +1,41 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О токене DKNY — Философия и технология</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <title>About DKNY — Brand Story</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0A0A0A; color: #FFFFFF; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px; }
+        .page-hero { padding: 120px 0 60px; text-align: center; }
+        .page-title { font-family: 'Playfair Display', serif; font-size: 56px; }
+        .page-title span { color: #D4AF37; }
+        .content { max-width: 800px; margin: 0 auto; }
+        .content h2 { font-family: 'Playfair Display', serif; font-size: 32px; margin: 40px 0 16px; }
+        .content p { font-size: 18px; opacity: 0.7; margin-bottom: 16px; }
+        .back-link { display: inline-block; margin-top: 40px; color: #D4AF37; }
+    </style>
 </head>
 <body>
-    <!-- ХЕДЕР (такой же, как на index.html) -->
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="index.html" class="logo">
-                    <img src="images/logo.svg" alt="DKNY" width="120">
-                </a>
-                <nav class="nav">
-                    <ul>
-                        <li><a href="about.html" class="active">О токене</a></li>
-                        <li><a href="ecosystem.html">Экосистема</a></li>
-                        <li><a href="staking.html">Стейкинг</a></li>
-                        <li><a href="buy.html">Купить</a></li>
-                        <li><a href="rwa.html">RWA</a></li>
-                        <li><a href="islamic.html">Шариат</a></li>
-                        <li><a href="blog.html">Блог</a></li>
-                        <li><a href="community.html">Сообщество</a></li>
-                    </ul>
-                </nav>
-                <div class="header-actions">
-                    <button id="connectWallet" class="btn btn-gold">Подключить кошелек</button>
-                    <button class="menu-toggle" aria-label="Меню">☰</button>
-                </div>
-            </div>
+    <div class="page-hero">
+        <h1 class="page-title">About <span>DKNY</span></h1>
+        <p style="opacity:0.6;font-size:18px;">The story behind the brand</p>
+    </div>
+    <div class="container">
+        <div class="content">
+            <h2>Our Philosophy</h2>
+            <p>DKNY represents the fusion of New York's energy, luxury fashion, and decentralized finance. We believe in creating value through innovation and accessibility.</p>
+            
+            <h2>Mission</h2>
+            <p>To build a bridge between traditional luxury assets and the Web3 economy, offering investors unprecedented access to brand-backed tokens, RWA, and Sharia-compliant products.</p>
+            
+            <h2>Vision</h2>
+            <p>To become the leading ecosystem for brand tokenization, setting new standards for transparency, security, and financial inclusion.</p>
+            
+            <a href="index.html" class="back-link">← Back to Home</a>
         </div>
-    </header>
-
-    <!-- СТРАНИЦА "О ТОКЕНЕ" -->
-    <main>
-        <section class="page-hero">
-            <div class="container">
-                <h1 class="page-title">О токене <span class="highlight">DKNY</span></h1>
-                <p class="page-subtitle">Философия, технология и будущее экосистемы BYT</p>
-            </div>
-        </section>
-
-        <section class="about-content">
-            <div class="container">
-                <div class="about-grid">
-                    <div class="about-text">
-                        <h2>Философия проекта</h2>
-                        <p><strong>DKNY</strong> — это не просто токен. Это цифровой входной билет в мир премиальных брендовых активов, объединенных в экосистему BYT.</p>
-                        <p>Мы создаем мост между традиционным люксом и децентрализованными финансами, предлагая инвесторам:</p>
-                        <ul>
-                            <li>Доступ к эксклюзивным стейкинг-пулам с высоким APY</li>
-                            <li>Токенизацию реальных активов (недвижимость, ювелирка, авто)</li>
-                            <li>Шариат-совместимые финансовые продукты</li>
-                            <li>Участие в управлении экосистемой</li>
-                        </ul>
-                    </div>
-                    <div class="about-image">
-                        <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800" alt="Философия DKNY" loading="lazy">
-                    </div>
-                </div>
-
-                <div class="tech-specs">
-                    <h2>Технические характеристики</h2>
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <span class="spec-label">Блокчейн</span>
-                            <span class="spec-value">Solana (SPL-токен)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Адрес контракта</span>
-                            <span class="spec-value"><code>Bess9scjhF94Y5z4k57SmYwysJ4jcUxAbGsQ9Gu6vmuW</code></span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Эмиссия</span>
-                            <span class="spec-value">10,000,000,000 (фиксированная)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Mint authority</span>
-                            <span class="spec-value">Отключена (без права доп. эмиссии)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">DePIN-ready</span>
-                            <span class="spec-value">✅ Инфраструктура для децентрализованных сетей</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="roadmap">
-                    <h2>Дорожная карта</h2>
-                    <div class="roadmap-timeline">
-                        <div class="milestone">
-                            <span class="milestone-date">Q3 2026</span>
-                            <h3>Запуск DKNY</h3>
-                            <p>Деплой токена, создание пулов ликвидности на Meteora, старт сообщества</p>
-                        </div>
-                        <div class="milestone">
-                            <span class="milestone-date">Q4 2026</span>
-                            <h3>Экосистема BYT</h3>
-                            <p>Запуск брендовых токенов (JVC, ZARA, SANY), базовые стейкинг-пулы</p>
-                        </div>
-                        <div class="milestone">
-                            <span class="milestone-date">Q1 2027</span>
-                            <h3>RWA-токенизация</h3>
-                            <p>Первый выпуск токенов под недвижимость в Нью-Йорке</p>
-                        </div>
-                        <div class="milestone">
-                            <span class="milestone-date">Q2 2027</span>
-                            <h3>Шариат-продукты</h3>
-                            <p>Запуск Murabaha, Ijara, Istisna смарт-контрактов</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ФУТЕР (такой же, как на index.html) -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo">
-                        <img src="images/logo.svg" alt="DKNY" width="100">
-                    </a>
-                    <p class="footer-description">Вход в мир премиальных брендовых токенов</p>
-                    <div class="footer-social">
-                        <a href="https://t.me/dkny_token" target="_blank" class="social-link">Telegram</a>
-                        <a href="#" class="social-link">Twitter</a>
-                        <a href="https://github.com/byt-assist" target="_blank" class="social-link">GitHub</a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Токен</h4>
-                        <ul>
-                            <li><a href="about.html">О токене</a></li>
-                            <li><a href="buy.html">Купить</a></li>
-                            <li><a href="whitepaper.html">Whitepaper</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Продукты</h4>
-                        <ul>
-                            <li><a href="staking.html">Стейкинг</a></li>
-                            <li><a href="rwa.html">RWA</a></li>
-                            <li><a href="islamic.html">Шариат</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Сообщество</h4>
-                        <ul>
-                            <li><a href="community.html">Контакты</a></li>
-                            <li><a href="blog.html">Блог</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="legal-disclaimer">
-                    <p>⚠️ <strong>DKNY — независимый SPL-токен.</strong> Не аффилирован с Donna Karan New York. Все названия брендов используются как вымышленные аббревиатуры в экосистеме BYT.</p>
-                    <p><a href="legal.html">Юридическая информация</a> | <a href="#">Политика конфиденциальности</a></p>
-                </div>
-                <p class="footer-copy">© 2026 BYT Ecosystem. Все права защищены.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/main.js"></script>
-    <script src="js/wallet.js"></script>
+    </div>
 </body>
 </html>
