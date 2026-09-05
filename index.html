@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DKNY — Цифровой Нью-Йорк</title>
     
-    <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
@@ -29,18 +28,13 @@
             color: inherit;
         }
         
-        img {
-            max-width: 100%;
-            display: block;
-        }
-        
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 40px;
         }
         
-        /* ===== HEADER (ПРОЗРАЧНЫЙ) ===== */
+        /* ===== HEADER ===== */
         .header {
             position: fixed;
             top: 0;
@@ -102,7 +96,7 @@
             color: #0A0A0A;
         }
         
-        /* ===== HERO (ПОЛНОЭКРАННЫЙ) ===== */
+        /* ===== HERO (ЧЕРНАЯ МОДЕЛЬ) ===== */
         .hero {
             height: 100vh;
             display: flex;
@@ -110,7 +104,7 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            background: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1920') center/cover no-repeat;
+            background: url('model-black.jpg') center/cover no-repeat;
         }
         
         .hero::after {
@@ -188,7 +182,7 @@
             margin-top: 4px;
         }
         
-        /* ===== СЕКЦИЯ "О ТОКЕНЕ" ===== */
+        /* ===== О ТОКЕНЕ (БЕЛАЯ МОДЕЛЬ) ===== */
         .about {
             padding: 120px 0;
             background: #0A0A0A;
@@ -201,15 +195,11 @@
             align-items: center;
         }
         
-        .about-image {
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
         .about-image img {
             width: 100%;
             height: 500px;
             object-fit: cover;
+            border-radius: 12px;
         }
         
         .about-text h2 {
@@ -254,10 +244,11 @@
             letter-spacing: 1px;
         }
         
-        /* ===== ЭКОСИСТЕМА (ГАЛЕРЕЯ БРЕНДОВ) ===== */
+        /* ===== ЭКОСИСТЕМА (ЦВЕТНАЯ МОДЕЛЬ) ===== */
         .ecosystem {
-            padding: 100px 0;
-            background: #0A0A0A;
+            padding: 120px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('model-color.jpg') center/cover no-repeat;
+            background-attachment: fixed;
         }
         
         .section-header {
@@ -276,7 +267,7 @@
         
         .section-header p {
             font-size: 18px;
-            opacity: 0.6;
+            opacity: 0.7;
             margin-top: 12px;
         }
         
@@ -288,15 +279,18 @@
         
         .brand-card {
             background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             padding: 30px 20px;
             border-radius: 12px;
             text-align: center;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .brand-card:hover {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(212, 175, 55, 0.15);
             transform: translateY(-5px);
+            border-color: #D4AF37;
         }
         
         .brand-logo {
@@ -319,10 +313,11 @@
             margin-top: 4px;
         }
         
-        /* ===== СТЕЙКИНГ ===== */
+        /* ===== СТЕЙКИНГ (CASUAL МОДЕЛЬ) ===== */
         .staking {
-            padding: 100px 0;
-            background: #0A0A0A;
+            padding: 120px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('model-casual.jpg') center/cover no-repeat;
+            background-attachment: fixed;
         }
         
         .staking-grid {
@@ -333,22 +328,24 @@
         
         .pool-card {
             background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
             padding: 40px 30px;
             border-radius: 12px;
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .pool-card:hover {
             border-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
         }
         
         .pool-card.premium {
             border-color: #D4AF37;
         }
         
-        .pool-card .pool-icon {
+        .pool-icon {
             font-size: 48px;
             margin-bottom: 16px;
         }
@@ -359,21 +356,21 @@
             margin-bottom: 8px;
         }
         
-        .pool-card .apy {
+        .apy {
             font-size: 36px;
             font-weight: 700;
             color: #D4AF37;
             margin: 16px 0;
         }
         
-        .pool-card .apy small {
+        .apy small {
             font-size: 16px;
             font-weight: 400;
             color: #FFFFFF;
             opacity: 0.5;
         }
         
-        .pool-card .pool-desc {
+        .pool-desc {
             font-size: 14px;
             opacity: 0.6;
             margin-bottom: 20px;
@@ -491,10 +488,6 @@
                 flex-wrap: wrap;
             }
             
-            .hero-stats .stat {
-                flex: 1 1 40%;
-            }
-            
             .brand-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -521,11 +514,6 @@
             .hero-subtitle {
                 font-size: 14px;
             }
-            
-            .brand-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
         }
     </style>
 </head>
@@ -542,7 +530,7 @@
         <button class="wallet-btn" id="connectWallet">Подключить кошелек</button>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO (Черная модель) -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">⚡ Цифровой Нью-Йорк</div>
@@ -566,12 +554,12 @@
         </div>
     </section>
 
-    <!-- О ТОКЕНЕ -->
+    <!-- О ТОКЕНЕ (Белая модель) -->
     <section class="about" id="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800" alt="Нью-Йорк">
+                    <img src="model-white.jpg" alt="DKNY White Collection" loading="lazy">
                 </div>
                 <div class="about-text">
                     <h2>DKNY — это <span>не мемкоин</span></h2>
@@ -600,7 +588,7 @@
         </div>
     </section>
 
-    <!-- ЭКОСИСТЕМА -->
+    <!-- ЭКОСИСТЕМА (Цветная модель) -->
     <section class="ecosystem" id="ecosystem">
         <div class="container">
             <div class="section-header">
@@ -643,7 +631,7 @@
         </div>
     </section>
 
-    <!-- СТЕЙКИНГ -->
+    <!-- СТЕЙКИНГ (Casual модель) -->
     <section class="staking" id="staking">
         <div class="container">
             <div class="section-header">
@@ -680,7 +668,7 @@
     </section>
 
     <!-- ПУЛЫ ЛИКВИДНОСТИ -->
-    <section class="ecosystem" id="pools">
+    <section class="ecosystem" id="pools" style="background: #0A0A0A;">
         <div class="container">
             <div class="section-header">
                 <h2>Пулы ликвидности <span>DKNY</span></h2>
@@ -688,7 +676,7 @@
             </div>
             
             <div class="staking-grid">
-                <div class="pool-card">
+                <div class="pool-card" style="background: rgba(255, 255, 255, 0.03);">
                     <div class="pool-icon">💱</div>
                     <h3>DKNY / EURC</h3>
                     <div class="apy">$678M <small>ликвидность</small></div>
@@ -696,7 +684,7 @@
                     <a href="https://www.geckoterminal.com/solana/pools/EmsdfHbAczQBZPrP1eHUs5W1dAhFpJRfuntTfPtYnXdG" target="_blank" class="pool-btn">Открыть пул →</a>
                 </div>
                 
-                <div class="pool-card">
+                <div class="pool-card" style="background: rgba(255, 255, 255, 0.03);">
                     <div class="pool-icon">💱</div>
                     <h3>DKNY / USDT</h3>
                     <div class="apy">$586M <small>ликвидность</small></div>
@@ -739,7 +727,7 @@
             }
         });
         
-        // Подключение кошелька (заглушка)
+        // Подключение кошелька
         document.getElementById('connectWallet').addEventListener('click', function() {
             alert('Подключение кошелька Solana (Phantom/Backpack)');
         });
