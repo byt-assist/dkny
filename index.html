@@ -3,250 +3,705 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DKNY Token — Вход в экосистему BYT</title>
-    <meta name="description" content="DKNY — флагманский токен экосистемы BYT с интеграцией RWA и шариатских продуктов.">
-    
-    <!-- Подключение стилей -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <title>DKNY — Цифровой Нью-Йорк</title>
     
     <!-- Шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <style>
+        /* ===== БАЗОВЫЕ СТИЛИ ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0A;
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* ===== HEADER (ПРОЗРАЧНЫЙ) ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 16px 40px;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+        }
+        
+        .logo span {
+            color: #D4AF37;
+        }
+        
+        .nav a {
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-left: 40px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav a:hover {
+            opacity: 1;
+        }
+        
+        .wallet-btn {
+            background: transparent;
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .wallet-btn:hover {
+            background: #D4AF37;
+            color: #0A0A0A;
+        }
+        
+        /* ===== HERO (ПОЛНОЭКРАННЫЙ) ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=1920') center/cover no-repeat;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #D4AF37;
+            margin-bottom: 30px;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 96px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        
+        .hero-title span {
+            color: #D4AF37;
+        }
+        
+        .hero-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 50px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #D4AF37;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+        
+        /* ===== СЕКЦИЯ "О ТОКЕНЕ" ===== */
+        .about {
+            padding: 120px 0;
+            background: #0A0A0A;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .about-text h2 span {
+            color: #D4AF37;
+        }
+        
+        .about-text p {
+            font-size: 18px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        
+        .feature-title {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== ЭКОСИСТЕМА (ГАЛЕРЕЯ БРЕНДОВ) ===== */
+        .ecosystem {
+            padding: 100px 0;
+            background: #0A0A0A;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+        }
+        
+        .section-header h2 span {
+            color: #D4AF37;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            opacity: 0.6;
+            margin-top: 12px;
+        }
+        
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+        
+        .brand-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-card:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .brand-logo {
+            font-size: 36px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .brand-name {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+        
+        .brand-price {
+            font-size: 12px;
+            color: #D4AF37;
+            margin-top: 4px;
+        }
+        
+        /* ===== СТЕЙКИНГ ===== */
+        .staking {
+            padding: 100px 0;
+            background: #0A0A0A;
+        }
+        
+        .staking-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .pool-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .pool-card:hover {
+            border-color: #D4AF37;
+        }
+        
+        .pool-card.premium {
+            border-color: #D4AF37;
+        }
+        
+        .pool-card .pool-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .pool-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .pool-card .apy {
+            font-size: 36px;
+            font-weight: 700;
+            color: #D4AF37;
+            margin: 16px 0;
+        }
+        
+        .pool-card .apy small {
+            font-size: 16px;
+            font-weight: 400;
+            color: #FFFFFF;
+            opacity: 0.5;
+        }
+        
+        .pool-card .pool-desc {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-bottom: 20px;
+        }
+        
+        .pool-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+        
+        .pool-btn:hover {
+            background: #D4AF37;
+            color: #0A0A0A;
+        }
+        
+        /* ===== ФУТЕР ===== */
+        .footer {
+            padding: 60px 0 30px;
+            background: #0A0A0A;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .footer-brand span {
+            color: #D4AF37;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .footer-disclaimer {
+            width: 100%;
+            font-size: 11px;
+            opacity: 0.3;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 64px;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .brand-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .staking-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .header {
+                padding: 16px 20px;
+            }
+            
+            .nav a {
+                margin-left: 20px;
+                font-size: 12px;
+            }
+            
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-stats {
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+            
+            .hero-stats .stat {
+                flex: 1 1 40%;
+            }
+            
+            .brand-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .staking-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 14px;
+            }
+            
+            .brand-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- ХЕДЕР -->
-    <header class="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="index.html" class="logo">
-                    <img src="images/logo.svg" alt="DKNY" width="120">
-                </a>
-                
-                <nav class="nav">
-                    <ul>
-                        <li><a href="about.html">О токене</a></li>
-                        <li><a href="ecosystem.html">Экосистема</a></li>
-                        <li><a href="staking.html">Стейкинг</a></li>
-                        <li><a href="buy.html">Купить</a></li>
-                        <li><a href="rwa.html">RWA</a></li>
-                        <li><a href="islamic.html">Шариат</a></li>
-                        <li><a href="blog.html">Блог</a></li>
-                        <li><a href="community.html">Сообщество</a></li>
-                    </ul>
-                </nav>
-                
-                <div class="header-actions">
-                    <button id="connectWallet" class="btn btn-gold">Подключить кошелек</button>
-                    <button class="menu-toggle" aria-label="Меню">☰</button>
-                </div>
-            </div>
-        </div>
+    <header class="header" id="header">
+        <a href="#" class="logo">DKNY<span>.</span></a>
+        <nav class="nav">
+            <a href="#about">О токене</a>
+            <a href="#ecosystem">Бренды</a>
+            <a href="#staking">Стейкинг</a>
+            <a href="#pools">Пулы</a>
+        </nav>
+        <button class="wallet-btn" id="connectWallet">Подключить кошелек</button>
     </header>
 
-    <!-- HERO СЕКЦИЯ -->
+    <!-- HERO -->
     <section class="hero">
-        <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=1920" alt="Нью-Йорк" class="hero-image">
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="badge">⚡ Флагман экосистемы BYT</span>
+        <div class="hero-content">
+            <div class="hero-badge">⚡ Цифровой Нью-Йорк</div>
+            <h1 class="hero-title">SHIFT INTO <span>WEB3</span></h1>
+            <p class="hero-subtitle">Donna Kahn New York — вход в мир брендовых токенов</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">$1.00</div>
+                    <div class="stat-label">Цена DKNY</div>
                 </div>
-                <h1 class="hero-title">SHIFT INTO <span class="highlight">WEB3</span></h1>
-                <p class="hero-subtitle">Donna Kahn New York Token — входной билет в мир премиальных брендовых токенов</p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-value">$1.00</span>
-                        <span class="stat-label">Цена DKNY</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">$10B</span>
-                        <span class="stat-label">Рыночная капа</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">17</span>
-                        <span class="stat-label">Холдеров</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">$1.2B+</span>
-                        <span class="stat-label">Общая ликвидность</span>
-                    </div>
+                <div class="stat">
+                    <div class="stat-value">$10B</div>
+                    <div class="stat-label">Рыночная капа</div>
                 </div>
-                
-                <div class="hero-actions">
-                    <a href="buy.html" class="btn btn-gold btn-large">🚀 Купить DKNY</a>
-                    <a href="staking.html" class="btn btn-outline btn-large">🔒 Стейкинг</a>
-                    <a href="https://www.geckoterminal.com/solana/pools/EmsdfHbAczQBZPrP1eHUs5W1dAhFpJRfuntTfPtYnXdG" target="_blank" class="btn btn-outline btn-large">📊 График</a>
+                <div class="stat">
+                    <div class="stat-value">17</div>
+                    <div class="stat-label">Холдеров</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- МЕТРИКИ ТОКЕНА -->
-    <section class="metrics">
+    <!-- О ТОКЕНЕ -->
+    <section class="about" id="about">
         <div class="container">
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <h3>Общая эмиссия</h3>
-                    <p class="metric-value">10,000,000,000</p>
-                    <span class="metric-label">Фиксированная, без права минтинга</span>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=800" alt="Нью-Йорк">
                 </div>
-                <div class="metric-card">
-                    <h3>Блокчейн</h3>
-                    <p class="metric-value">Solana</p>
-                    <span class="metric-label">SPL-токен, быстрый и дешевый</span>
-                </div>
-                <div class="metric-card">
-                    <h3>Ликвидность</h3>
-                    <p class="metric-value">$1.2B+</p>
-                    <span class="metric-label">2 пула на Meteora (EURC/USDT)</span>
-                </div>
-                <div class="metric-card">
-                    <h3>Возраст</h3>
-                    <p class="metric-value">3 месяца</p>
-                    <span class="metric-label">Активная торговля</span>
+                <div class="about-text">
+                    <h2>DKNY — это <span>не мемкоин</span></h2>
+                    <p>Флагманский токен экосистемы BYT с интеграцией реальных активов и шариатских продуктов. Создан для тех, кто ценит стиль, инновации и децентрализацию.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon">🔒</div>
+                            <div class="feature-title">Фикс. эмиссия</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🏦</div>
+                            <div class="feature-title">Без права минтинга</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🌐</div>
+                            <div class="feature-title">DePIN-ready</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">🕌</div>
+                            <div class="feature-title">Шариат-совместим</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ЭКОСИСТЕМА БРЕНДОВ -->
-    <section class="ecosystem">
+    <!-- ЭКОСИСТЕМА -->
+    <section class="ecosystem" id="ecosystem">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Экосистема <span class="highlight">BYT</span></h2>
-                <p class="section-subtitle">12 брендовых токенов с интеграцией RWA и шариатских продуктов</p>
+                <h2>Экосистема <span>BYT</span></h2>
+                <p>12 брендовых токенов в одной экосистеме</p>
             </div>
             
             <div class="brand-grid">
-                <a href="#" class="brand-card">
-                    <img src="images/tokens/dkny.svg" alt="DKNY" class="brand-logo">
-                    <span class="brand-name">DKNY</span>
-                    <span class="brand-price">$1.00</span>
-                </a>
-                <a href="#" class="brand-card">
-                    <img src="images/tokens/jvc.svg" alt="JVC" class="brand-logo">
-                    <span class="brand-name">JVC</span>
-                    <span class="brand-price">$0.01</span>
-                </a>
-                <a href="#" class="brand-card">
-                    <img src="images/tokens/zara.svg" alt="ZARA" class="brand-logo">
-                    <span class="brand-name">ZARA</span>
-                    <span class="brand-price">$0.01</span>
-                </a>
-                <a href="#" class="brand-card">
-                    <img src="images/tokens/sany.svg" alt="SANY" class="brand-logo">
-                    <span class="brand-name">SANY</span>
-                    <span class="brand-price">$0.01</span>
-                </a>
-                <a href="#" class="brand-card">
-                    <img src="images/tokens/gucci.svg" alt="GUCCI" class="brand-logo">
-                    <span class="brand-name">GUCCI</span>
-                    <span class="brand-price">$0.01</span>
-                </a>
-                <a href="#" class="brand-card">
-                    <img src="images/tokens/prada.svg" alt="PRADA" class="brand-logo">
-                    <span class="brand-name">PRADA</span>
-                    <span class="brand-price">$0.01</span>
-                </a>
-            </div>
-            
-            <div class="text-center">
-                <a href="ecosystem.html" class="btn btn-outline">Смотреть все бренды →</a>
+                <div class="brand-card">
+                    <div class="brand-logo">DKNY</div>
+                    <div class="brand-name">Donna Kahn NY</div>
+                    <div class="brand-price">$1.00</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">JVC</div>
+                    <div class="brand-name">JVC</div>
+                    <div class="brand-price">$0.01</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">ZARA</div>
+                    <div class="brand-name">ZARA</div>
+                    <div class="brand-price">$0.01</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">SANY</div>
+                    <div class="brand-name">SANY</div>
+                    <div class="brand-price">$0.01</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">GUCCI</div>
+                    <div class="brand-name">GUCCI</div>
+                    <div class="brand-price">$0.01</div>
+                </div>
+                <div class="brand-card">
+                    <div class="brand-logo">PRADA</div>
+                    <div class="brand-name">PRADA</div>
+                    <div class="brand-price">$0.01</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ПРЕИМУЩЕСТВА -->
-    <section class="advantages">
+    <!-- СТЕЙКИНГ -->
+    <section class="staking" id="staking">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Почему <span class="highlight">DKNY</span>?</h2>
+                <h2>Стейкинг <span>DKNY</span></h2>
+                <p>Зарабатывайте до 25% APY в токенах BYT</p>
             </div>
             
-            <div class="advantages-grid">
-                <div class="advantage-card">
-                    <div class="advantage-icon">🔒</div>
-                    <h3>Безопасность</h3>
-                    <p>Смарт-контракты проверены, без права минтинга, фиксированная эмиссия</p>
+            <div class="staking-grid">
+                <div class="pool-card">
+                    <div class="pool-icon">💎</div>
+                    <h3>Базовый пул</h3>
+                    <div class="apy">12% <small>APY</small></div>
+                    <p class="pool-desc">Входной уровень для всех холдеров</p>
+                    <a href="#" class="pool-btn">Застейкать</a>
                 </div>
-                <div class="advantage-card">
-                    <div class="advantage-icon">💰</div>
-                    <h3>Доходность</h3>
-                    <p>Стейкинг с APY до 25%, награды в BYT и премиум-доступ</p>
+                
+                <div class="pool-card premium">
+                    <div class="pool-icon">👑</div>
+                    <h3>Премиум пул</h3>
+                    <div class="apy">25% <small>APY</small></div>
+                    <p class="pool-desc">Требуется 1000 DKNY в стейкинге</p>
+                    <a href="#" class="pool-btn">Застейкать</a>
                 </div>
-                <div class="advantage-card">
-                    <div class="advantage-icon">🏢</div>
-                    <h3>Реальные активы</h3>
-                    <p>Токенизация недвижимости, ювелирки и авто класса люкс</p>
-                </div>
-                <div class="advantage-card">
-                    <div class="advantage-icon">🕌</div>
-                    <h3>Шариат-совместимость</h3>
-                    <p>Продукты Murabaha, Ijara, Istisna для этичных инвестиций</p>
+                
+                <div class="pool-card">
+                    <div class="pool-icon">🌟</div>
+                    <h3>Эксклюзив</h3>
+                    <div class="apy">40% <small>APY</small></div>
+                    <p class="pool-desc">Доступ по приглашениям</p>
+                    <a href="#" class="pool-btn">Застейкать</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ПУЛЫ ЛИКВИДНОСТИ -->
-    <section class="pools">
+    <section class="ecosystem" id="pools">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Пулы ликвидности <span class="highlight">DKNY</span></h2>
+                <h2>Пулы ликвидности <span>DKNY</span></h2>
+                <p>Общая ликвидность более $1.2B</p>
             </div>
             
-            <div class="pools-grid">
+            <div class="staking-grid">
                 <div class="pool-card">
-                    <div class="pool-header">
-                        <span class="pool-pair">DKNY / EURC</span>
-                        <span class="pool-dex">Meteora V2</span>
-                    </div>
-                    <div class="pool-body">
-                        <div class="pool-stat">
-                            <span class="stat-label">Ликвидность</span>
-                            <span class="stat-value">$678M</span>
-                        </div>
-                        <div class="pool-stat">
-                            <span class="stat-label">APY</span>
-                            <span class="stat-value">~8%</span>
-                        </div>
-                        <div class="pool-stat">
-                            <span class="stat-label">Объем (24ч)</span>
-                            <span class="stat-value">$15.3M</span>
-                        </div>
-                    </div>
-                    <a href="https://www.geckoterminal.com/solana/pools/EmsdfHbAczQBZPrP1eHUs5W1dAhFpJRfuntTfPtYnXdG" target="_blank" class="pool-link">Открыть пул →</a>
+                    <div class="pool-icon">💱</div>
+                    <h3>DKNY / EURC</h3>
+                    <div class="apy">$678M <small>ликвидность</small></div>
+                    <p class="pool-desc">Meteora V2 • APY ~8%</p>
+                    <a href="https://www.geckoterminal.com/solana/pools/EmsdfHbAczQBZPrP1eHUs5W1dAhFpJRfuntTfPtYnXdG" target="_blank" class="pool-btn">Открыть пул →</a>
                 </div>
                 
                 <div class="pool-card">
-                    <div class="pool-header">
-                        <span class="pool-pair">DKNY / USDT</span>
-                        <span class="pool-dex">Meteora V2</span>
-                    </div>
-                    <div class="pool-body">
-                        <div class="pool-stat">
-                            <span class="stat-label">Ликвидность</span>
-                            <span class="stat-value">$586M</span>
-                        </div>
-                        <div class="pool-stat">
-                            <span class="stat-label">APY</span>
-                            <span class="stat-value">~6%</span>
-                        </div>
-                        <div class="pool-stat">
-                            <span class="stat-label">Объем (24ч)</span>
-                            <span class="stat-value">$0.75</span>
-                        </div>
-                    </div>
-                    <a href="https://www.geckoterminal.com/solana/pools/MzAkpwXbRBKXGxk3EauiiNPZ6omBmjTCZAVvn6dja33" target="_blank" class="pool-link">Открыть пул →</a>
+                    <div class="pool-icon">💱</div>
+                    <h3>DKNY / USDT</h3>
+                    <div class="apy">$586M <small>ликвидность</small></div>
+                    <p class="pool-desc">Meteora V2 • APY ~6%</p>
+                    <a href="https://www.geckoterminal.com/solana/pools/MzAkpwXbRBKXGxk3EauiiNPZ6omBmjTCZAVvn6dja33" target="_blank" class="pool-btn">Открыть пул →</a>
                 </div>
             </div>
         </div>
@@ -255,60 +710,39 @@
     <!-- ФУТЕР -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo">
-                        <img src="images/logo.svg" alt="DKNY" width="100">
-                    </a>
-                    <p class="footer-description">Вход в мир премиальных брендовых токенов</p>
-                    <div class="footer-social">
-                        <a href="https://t.me/dkny_token" target="_blank" class="social-link">Telegram</a>
-                        <a href="#" class="social-link">Twitter</a>
-                        <a href="https://github.com/byt-assist" target="_blank" class="social-link">GitHub</a>
-                    </div>
-                </div>
-                
+            <div class="footer-content">
+                <div class="footer-brand">DKNY<span>.</span></div>
                 <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Токен</h4>
-                        <ul>
-                            <li><a href="about.html">О токене</a></li>
-                            <li><a href="buy.html">Купить</a></li>
-                            <li><a href="whitepaper.html">Whitepaper</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Продукты</h4>
-                        <ul>
-                            <li><a href="staking.html">Стейкинг</a></li>
-                            <li><a href="rwa.html">RWA</a></li>
-                            <li><a href="islamic.html">Шариат</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Сообщество</h4>
-                        <ul>
-                            <li><a href="community.html">Контакты</a></li>
-                            <li><a href="blog.html">Блог</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                        </ul>
-                    </div>
+                    <a href="https://t.me/dkny_token" target="_blank">Telegram</a>
+                    <a href="#" target="_blank">Twitter</a>
+                    <a href="https://github.com/byt-assist" target="_blank">GitHub</a>
+                    <a href="#">Whitepaper</a>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <div class="legal-disclaimer">
-                    <p>⚠️ <strong>DKNY — независимый SPL-токен.</strong> Не аффилирован с Donna Karan New York. Все названия брендов используются как вымышленные аббревиатуры в экосистеме BYT.</p>
-                    <p><a href="legal.html">Юридическая информация</a> | <a href="#">Политика конфиденциальности</a></p>
-                </div>
-                <p class="footer-copy">© 2026 BYT Ecosystem. Все права защищены.</p>
+            <div class="footer-disclaimer">
+                ⚠️ DKNY — независимый SPL-токен. Не аффилирован с Donna Karan New York. 
+                Все названия брендов используются как вымышленные аббревиатуры в экосистеме BYT.
             </div>
         </div>
     </footer>
 
-    <!-- ПОДКЛЮЧЕНИЕ JS -->
-    <script src="js/main.js"></script>
-    <script src="js/wallet.js"></script>
-    <script src="js/animations.js"></script>
+    <!-- JS -->
+    <script>
+        // Прозрачный хедер при скролле
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Подключение кошелька (заглушка)
+        document.getElementById('connectWallet').addEventListener('click', function() {
+            alert('Подключение кошелька Solana (Phantom/Backpack)');
+        });
+    </script>
 </body>
 </html>
